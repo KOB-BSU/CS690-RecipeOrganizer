@@ -1,0 +1,15 @@
+/workspaces/CS690-RecipeOrganizer/recipe-organizer/RecipeOrganizer/bin/Debug/net8.0/RecipeOrganizer
+/workspaces/CS690-RecipeOrganizer/recipe-organizer/RecipeOrganizer/bin/Debug/net8.0/RecipeOrganizer.deps.json
+/workspaces/CS690-RecipeOrganizer/recipe-organizer/RecipeOrganizer/bin/Debug/net8.0/RecipeOrganizer.runtimeconfig.json
+/workspaces/CS690-RecipeOrganizer/recipe-organizer/RecipeOrganizer/bin/Debug/net8.0/RecipeOrganizer.dll
+/workspaces/CS690-RecipeOrganizer/recipe-organizer/RecipeOrganizer/bin/Debug/net8.0/RecipeOrganizer.pdb
+/workspaces/CS690-RecipeOrganizer/recipe-organizer/RecipeOrganizer/obj/Debug/net8.0/RecipeOrganizer.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/CS690-RecipeOrganizer/recipe-organizer/RecipeOrganizer/obj/Debug/net8.0/RecipeOrganizer.AssemblyInfoInputs.cache
+/workspaces/CS690-RecipeOrganizer/recipe-organizer/RecipeOrganizer/obj/Debug/net8.0/RecipeOrganizer.AssemblyInfo.cs
+/workspaces/CS690-RecipeOrganizer/recipe-organizer/RecipeOrganizer/obj/Debug/net8.0/RecipeOrganizer.csproj.CoreCompileInputs.cache
+/workspaces/CS690-RecipeOrganizer/recipe-organizer/RecipeOrganizer/obj/Debug/net8.0/RecipeOrganizer.sourcelink.json
+/workspaces/CS690-RecipeOrganizer/recipe-organizer/RecipeOrganizer/obj/Debug/net8.0/RecipeOrganizer.dll
+/workspaces/CS690-RecipeOrganizer/recipe-organizer/RecipeOrganizer/obj/Debug/net8.0/refint/RecipeOrganizer.dll
+/workspaces/CS690-RecipeOrganizer/recipe-organizer/RecipeOrganizer/obj/Debug/net8.0/RecipeOrganizer.pdb
+/workspaces/CS690-RecipeOrganizer/recipe-organizer/RecipeOrganizer/obj/Debug/net8.0/RecipeOrganizer.genruntimeconfig.cache
+/workspaces/CS690-RecipeOrganizer/recipe-organizer/RecipeOrganizer/obj/Debug/net8.0/ref/RecipeOrganizer.dll
