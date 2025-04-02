@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/workspaces/CS690-RecipeOrganizer/recipe-organizer/RecipeOrganizer/RecipeOrganizer.csproj": {}
+    "/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeOrganizerUI/RecipeOrganizerUI.csproj": {}
   },
   "projects": {
-    "/workspaces/CS690-RecipeOrganizer/recipe-organizer/RecipeOrganizer/RecipeOrganizer.csproj": {
+    "/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeOrganizerUI/RecipeOrganizerUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/workspaces/CS690-RecipeOrganizer/recipe-organizer/RecipeOrganizer/RecipeOrganizer.csproj",
-        "projectName": "RecipeOrganizer",
-        "projectPath": "/workspaces/CS690-RecipeOrganizer/recipe-organizer/RecipeOrganizer/RecipeOrganizer.csproj",
+        "projectUniqueName": "/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeOrganizerUI/RecipeOrganizerUI.csproj",
+        "projectName": "RecipeOrganizerUI",
+        "projectPath": "/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeOrganizerUI/RecipeOrganizerUI.csproj",
         "packagesPath": "/home/codespace/.nuget/packages/",
-        "outputPath": "/workspaces/CS690-RecipeOrganizer/recipe-organizer/RecipeOrganizer/obj/",
+        "outputPath": "/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeOrganizerUI/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/codespace/.nuget/NuGet/NuGet.Config"

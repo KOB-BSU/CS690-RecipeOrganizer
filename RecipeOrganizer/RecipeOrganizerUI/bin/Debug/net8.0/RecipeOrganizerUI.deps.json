@@ -6,15 +6,15 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v8.0": {
-      "RecipeOrganizer/1.0.0": {
+      "RecipeOrganizerUI/1.0.0": {
         "runtime": {
-          "RecipeOrganizer.dll": {}
+          "RecipeOrganizerUI.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "RecipeOrganizer/1.0.0": {
+    "RecipeOrganizerUI/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
