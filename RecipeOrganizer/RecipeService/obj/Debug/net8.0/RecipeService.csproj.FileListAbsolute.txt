@@ -1,0 +1,12 @@
+/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeService/obj/Debug/net8.0/RecipeService.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeService/obj/Debug/net8.0/RecipeService.AssemblyInfoInputs.cache
+/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeService/obj/Debug/net8.0/RecipeService.AssemblyInfo.cs
+/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeService/obj/Debug/net8.0/RecipeService.csproj.CoreCompileInputs.cache
+/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeService/obj/Debug/net8.0/RecipeService.sourcelink.json
+/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeService/bin/Debug/net8.0/RecipeService.deps.json
+/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeService/bin/Debug/net8.0/RecipeService.dll
+/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeService/bin/Debug/net8.0/RecipeService.pdb
+/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeService/obj/Debug/net8.0/RecipeService.dll
+/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeService/obj/Debug/net8.0/refint/RecipeService.dll
+/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeService/obj/Debug/net8.0/RecipeService.pdb
+/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeService/obj/Debug/net8.0/ref/RecipeService.dll

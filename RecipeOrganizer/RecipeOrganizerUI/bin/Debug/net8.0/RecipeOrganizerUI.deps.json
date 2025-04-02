@@ -7,14 +7,30 @@
   "targets": {
     ".NETCoreApp,Version=v8.0": {
       "RecipeOrganizerUI/1.0.0": {
+        "dependencies": {
+          "RecipeService": "1.0.0"
+        },
         "runtime": {
           "RecipeOrganizerUI.dll": {}
+        }
+      },
+      "RecipeService/1.0.0": {
+        "runtime": {
+          "RecipeService.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
   },
   "libraries": {
     "RecipeOrganizerUI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RecipeService/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

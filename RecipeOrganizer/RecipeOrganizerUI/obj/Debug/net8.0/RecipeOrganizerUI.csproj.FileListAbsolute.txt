@@ -13,3 +13,7 @@
 /workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeOrganizerUI/obj/Debug/net8.0/RecipeOrganizerUI.pdb
 /workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeOrganizerUI/obj/Debug/net8.0/RecipeOrganizerUI.genruntimeconfig.cache
 /workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeOrganizerUI/obj/Debug/net8.0/ref/RecipeOrganizerUI.dll
+/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeOrganizerUI/bin/Debug/net8.0/RecipeService.dll
+/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeOrganizerUI/bin/Debug/net8.0/RecipeService.pdb
+/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeOrganizerUI/obj/Debug/net8.0/RecipeOrganizerUI.csproj.AssemblyReference.cache
+/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeOrganizerUI/obj/Debug/net8.0/RecipeOr.99B4FF12.Up2Date
