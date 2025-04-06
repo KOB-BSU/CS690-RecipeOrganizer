@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RecipeOrganizerUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e133e392cba7a4404de9f2bfd6d1ed3ad596864f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+881212f595003dca9110fbb274572dd0f53bd7ec")]
 [assembly: System.Reflection.AssemblyProductAttribute("RecipeOrganizerUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RecipeOrganizerUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
