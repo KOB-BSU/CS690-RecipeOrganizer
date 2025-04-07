@@ -36,76 +36,120 @@ public class Recipes
 
 }
 
-// public class Substitutions
-// {
-//     public class Substitution{
-//         public string? RefIngredient {get;set;}
-//         public string[]? SubIngredient {get;set;}
-//     }
-// }
+public class Substitutions
+{
 
+    public Dictionary<string, List<string>> substitutionsDict;
 
-public class GroceryItem{
-    public string? ItemDescription {get;set;}
-    public string? ItemQuantity {get;set;}
-
-    public GroceryItem(string description, string quantity){
-        [JsonPropertyName("ItemDescription")]
-        ItemDescription = description;
-        
-        [JsonPropertyName("ItemQuantity")]
-        ItemQuantity = quantity;
+    public Substitutions(){
+        substitutionsDict = new Dictionary<string, List<string>>();
     }
 
-}
-
-public class GroceryList{
-    public Dictionary<string, GroceryItem> GDict {get;set;}
-
-    public GroceryList(){
-        GDict = new Dictionary<string, GroceryItem>();
+    public void AddSubstitution(string refI, string subI){
+        if(!substitutionsDict.ContainsKey(refI)){
+            substitutionsDict[refI] = new List<string>();
+        }
+        substitutionsDict[refI].Add(subI);
     }
 
-    public void AddGroceryItem(string description, string quantity){
-        GDict.Add(description, new GroceryItem(description, quantity));
-    }
-
-
-     public void AddTestGroceryItems(){
-        AddGroceryItem("pigeon eggs", "baker's dozen");
-        AddGroceryItem("free-range mushrooms", "platoon");
-        AddGroceryItem("the smelliest of fish", "entire school");
-        AddGroceryItem("THE GREATEST BANANA", "THERE CAN ONLY BE ONE");
-        AddGroceryItem("less excellent bananas", "a bunch");                
+    public void ConsolePrintSubstititions(){
+        foreach(string key in substitutionsDict.Keys){
+            Console.WriteLine(key);
+            foreach(string elem in substitutionsDict[key]){
+                Console.WriteLine(elem);
+            }
+            Console.WriteLine();            
+        }
     }
 
     public void WriteToJSON(){
-        string jsonString = JsonSerializer.Serialize<Dictionary<string, GroceryItem>>(GDict);
-        File.WriteAllText("groceries.json", jsonString);
+        string jsonString = JsonSerializer.Serialize(substitutionsDict);
+        File.WriteAllText("substitutions.json", jsonString);
     }
 
     public void ReadFromJSON(){
-        string jsonString = File.ReadAllText("groceries.json");
+        string jsonString = File.ReadAllText("substitutions.json");
         Console.WriteLine(jsonString);
+        var de = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(jsonString);
 
-        var options = new JsonSerializerOptions{IncludeFields = true};
+        foreach(string key in de.Keys){
+            Console.WriteLine(key);
+            foreach(string elem in de[key]){
+                Console.WriteLine(elem);
+            }
+            Console.WriteLine();            
+        }
 
-        GDict = JsonSerializer.Deserialize<Dictionary<string, GroceryItem>>(jsonString, options);
     }
 
-    // public void ReadFromJSON(){
-    //     string jsonString = File.ReadAllText("groceries.json");
-    //     Console.WriteLine(jsonString);
-    //     Console.WriteLine();
-    //     // GList = JsonSerializer.Deserialize<List<GroceryItem>>(jsonString);
-    //     GList = JsonSerializer.Deserialize<List<GroceryItem>>(jsonString);
-        
-        
+    // public class Substitution{
+    //     public string? RefIngredient {get;set;}
+    //     public string[]? SubIngredient {get;set;}
     // }
-
-
-
 }
+
+
+// public class GroceryItem{
+//     public string? ItemDescription {get;set;}
+//     public string? ItemQuantity {get;set;}
+
+//     public GroceryItem(string description, string quantity){
+//         // [JsonPropertyName("ItemDescription")]
+//         ItemDescription = description;
+        
+//         // [JsonPropertyName("ItemQuantity")]
+//         ItemQuantity = quantity;
+//     }
+
+// }
+
+// public class GroceryList{
+//     public Dictionary<string, GroceryItem> GDict {get;set;}
+
+//     public GroceryList(){
+//         GDict = new Dictionary<string, GroceryItem>();
+//     }
+
+//     public void AddGroceryItem(string description, string quantity){
+//         GDict.Add(description, new GroceryItem(description, quantity));
+//     }
+
+
+//      public void AddTestGroceryItems(){
+//         AddGroceryItem("pigeon eggs", "baker's dozen");
+//         AddGroceryItem("free-range mushrooms", "platoon");
+//         AddGroceryItem("the smelliest of fish", "entire school");
+//         AddGroceryItem("THE GREATEST BANANA", "THERE CAN ONLY BE ONE");
+//         AddGroceryItem("less excellent bananas", "a bunch");                
+//     }
+
+//     public void WriteToJSON(){
+//         string jsonString = JsonSerializer.Serialize<Dictionary<string, GroceryItem>>(GDict);
+//         File.WriteAllText("groceries.json", jsonString);
+//     }
+
+//     public void ReadFromJSON(){
+//         string jsonString = File.ReadAllText("groceries.json");
+//         Console.WriteLine(jsonString);
+
+//         var options = new JsonSerializerOptions{IncludeFields = true};
+
+//         GDict = JsonSerializer.Deserialize<Dictionary<string, GroceryItem>>(jsonString, options);
+//     }
+
+//     // public void ReadFromJSON(){
+//     //     string jsonString = File.ReadAllText("groceries.json");
+//     //     Console.WriteLine(jsonString);
+//     //     Console.WriteLine();
+//     //     // GList = JsonSerializer.Deserialize<List<GroceryItem>>(jsonString);
+//     //     GList = JsonSerializer.Deserialize<List<GroceryItem>>(jsonString);
+        
+        
+//     // }
+
+
+
+// }
 
 
 
