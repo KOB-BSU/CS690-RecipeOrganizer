@@ -52,15 +52,37 @@ public class Substitutions
         substitutionsDict[refI].Add(subI);
     }
 
-    public void ConsolePrintSubstititions(){
-        foreach(string key in substitutionsDict.Keys){
-            Console.WriteLine(key);
-            foreach(string elem in substitutionsDict[key]){
-                Console.WriteLine(elem);
-            }
-            Console.WriteLine();            
+    public void DeleteSubstitution(string refI){
+        if(substitutionsDict.ContainsKey(refI)){
+            substitutionsDict.Remove(refI);
         }
     }
+
+    public void ConsolePrintAllSubstititions(){
+        foreach(string refI in substitutionsDict.Keys){
+            ConsolePrintSubstititions(refI);
+
+            // Console.WriteLine(key);
+            // foreach(string elem in substitutionsDict[key]){
+            //     Console.WriteLine(elem);
+            // }
+            // Console.WriteLine();            
+        }
+    }
+
+    public void ConsolePrintSubstititions(string refI){
+        if(substitutionsDict.ContainsKey(refI)){
+            Console.WriteLine("Substitutions for "+refI+":");
+            foreach(string subI in substitutionsDict[refI]){
+                Console.WriteLine(subI);
+            }
+        }else{
+            Console.WriteLine(refI+" does not have any stored substitutes.");
+        }
+        
+
+    }
+
 
     public void WriteToJSON(){
         string jsonString = JsonSerializer.Serialize(substitutionsDict);
@@ -70,7 +92,7 @@ public class Substitutions
     public void ReadFromJSON(){
         string jsonString = File.ReadAllText("substitutions.json");
         Console.WriteLine(jsonString);
-        var de = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(jsonString);
+        var de = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(jsonString)!;
 
         foreach(string key in de.Keys){
             Console.WriteLine(key);

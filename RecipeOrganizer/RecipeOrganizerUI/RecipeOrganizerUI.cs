@@ -14,11 +14,13 @@ public class Program
         //     Console.WriteLine(key);        
         // }
 
-        substitutions.ConsolePrintSubstititions();
+        substitutions.ConsolePrintAllSubstititions();
         substitutions.AddSubstitution("egg", "better egg");
         substitutions.AddSubstitution("egg", "a lousy egg");
         substitutions.AddSubstitution("vanilla", "there is no substititon, you monster");
-        substitutions.ConsolePrintSubstititions();
+        substitutions.ConsolePrintAllSubstititions();
+        substitutions.DeleteSubstitution("vanilla");
+        substitutions.ConsolePrintAllSubstititions();
         substitutions.WriteToJSON();
         substitutions.ReadFromJSON();
         
