@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 //https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/how-to
 using System;
 using System.Collections.Generic;
@@ -44,51 +45,63 @@ public class Recipes
 // }
 
 
+public class GroceryItem{
+    public string? ItemDescription {get;set;}
+    public string? ItemQuantity {get;set;}
+
+    public GroceryItem(string description, string quantity){
+        [JsonPropertyName("ItemDescription")]
+        ItemDescription = description;
+        
+        [JsonPropertyName("ItemQuantity")]
+        ItemQuantity = quantity;
+    }
+
+}
 
 public class GroceryList{
+    public Dictionary<string, GroceryItem> GDict {get;set;}
 
-    // public Dictionary<string, string> GList {get;set;}
-    public Dictionary<string, string> GList = new Dictionary<string, string>();
-
-    public void AddGroceryItem(string item, string quantity){
-        if(GList.ContainsKey(item)){
-            GList[item] = quantity;
-        }else{
-            GList.Add(item, quantity);
-        }            
+    public GroceryList(){
+        GDict = new Dictionary<string, GroceryItem>();
     }
 
-    public void RemoveGroceryItem(string item, string quantity){
-        if(GList.ContainsKey(item)){
-            GList.Remove(item);
-        }
+    public void AddGroceryItem(string description, string quantity){
+        GDict.Add(description, new GroceryItem(description, quantity));
     }
 
-    public void ConsolePrintGroceryList(){
-        Console.WriteLine();
-        foreach(KeyValuePair<string, string> kvp in GList){
-            Console.WriteLine("{1}:{0}", kvp.Key, kvp.Value);
-        }
-        Console.WriteLine();
-    }
 
-    public void AddTestItemsGroceryList(){
+     public void AddTestGroceryItems(){
         AddGroceryItem("pigeon eggs", "baker's dozen");
         AddGroceryItem("free-range mushrooms", "platoon");
-        AddGroceryItem("the smelliest of fish", "entire school");            
+        AddGroceryItem("the smelliest of fish", "entire school");
+        AddGroceryItem("THE GREATEST BANANA", "THERE CAN ONLY BE ONE");
+        AddGroceryItem("less excellent bananas", "a bunch");                
     }
 
-    // public void JSONSerializeGroceryList(){
-    //     string jsonString = JsonSerializer.Serialize(GList);
-    //     Console.WriteLine();
+    public void WriteToJSON(){
+        string jsonString = JsonSerializer.Serialize<Dictionary<string, GroceryItem>>(GDict);
+        File.WriteAllText("groceries.json", jsonString);
+    }
+
+    public void ReadFromJSON(){
+        string jsonString = File.ReadAllText("groceries.json");
+        Console.WriteLine(jsonString);
+
+        var options = new JsonSerializerOptions{IncludeFields = true};
+
+        GDict = JsonSerializer.Deserialize<Dictionary<string, GroceryItem>>(jsonString, options);
+    }
+
+    // public void ReadFromJSON(){
+    //     string jsonString = File.ReadAllText("groceries.json");
     //     Console.WriteLine(jsonString);
-    //     Console.WriteLine();        
+    //     Console.WriteLine();
+    //     // GList = JsonSerializer.Deserialize<List<GroceryItem>>(jsonString);
+    //     GList = JsonSerializer.Deserialize<List<GroceryItem>>(jsonString);
+        
+        
     // }
-    public string JSONSerializeGroceryList(){
-        string jsonString = JsonSerializer.Serialize(GList);
-        return jsonString;
-    }
-
 
 
 
@@ -100,67 +113,65 @@ public class GroceryList{
 
 
 
+// public class Groceries{
 
+//     // public Dictionary<string, string> GroceryList {get;set;}
+//     public Dictionary<string, string> GroceryList = new Dictionary<string, string>();
 
-
-// public class Groceries
-// {
-//     public class GroceryList{
-
-//         // public Dictionary<string, string> GList {get;set;}
-//         public Dictionary<string, string> GList = new Dictionary<string, string>();
-
-//         public void AddGroceryItem(string item, string quantity){
-//             if(GList.ContainsKey(item)){
-//                 GList[item] = quantity;
-//             }else{
-//                 GList.Add(item, quantity);
-//             }            
-//         }
-
-//         public void RemoveGroceryItem(string item, string quantity){
-//             if(GList.ContainsKey(item)){
-//                 GList.Remove(item);
-//             }
-//         }
-
-//         public void ConsolePrintGroceryList(){
-//             Console.WriteLine();
-//             foreach(KeyValuePair<string, string> kvp in GList){
-//                 Console.WriteLine("{0}:{1}", kvp.Key, kvp.Value);
-//             }
-//             Console.WriteLine();
-//         }
-
-//         public void AddTestItemsGroceryList(){
-//             AddGroceryItem("pigeon eggs", "baker's dozen");
-//             AddGroceryItem("free-range mushrooms", "platoon");
-//             AddGroceryItem("the smelliest of fish", "entire school");            
-//         }
-
-
-
-
-
-//         // public List<string> GroceryDescriptions {get;set;}
-//         // public List<string> GroceryQuantities {get;set;}
-//         // public List<bool> GroceryInCart {get;set;}
-
-//         // public GroceryList(){
-//         //     GroceryDescriptions = new List<string>();
-//         //     GroceryQuantities = new List<string>();
-//         //     GroceryInCart = new List<bool>();
-//         // }
-
-//         // public void ClearGroceryList(){
-//         //     GroceryDescriptions = new List<string>();
-//         //     GroceryQuantities = new List<string>();
-//         //     GroceryInCart = new List<bool>();
-//         // }
-
-//         // public void AddGroceryItem(string description, string quantity){
-//         //     GroceryDescription.Add(description);
-//         //     GroceryQuantity.Add(quantity);            
-//         // }
+//     public void AddGroceryItem(string item, string quantity){
+//         if(GroceryList.ContainsKey(item)){
+//             GroceryList[item] = quantity;
+//         }else{
+//             GroceryList.Add(item, quantity);
+//         }            
 //     }
+
+//     public void RemoveGroceryItem(string item, string quantity){
+//         if(GroceryList.ContainsKey(item)){
+//             GroceryList.Remove(item);
+//         }
+//     }
+
+//     public void ConsolePrintGroceryList(){
+//         Console.WriteLine();
+//         foreach(KeyValuePair<string, string> kvp in GroceryList){
+//             Console.WriteLine("{1}:{0}", kvp.Key, kvp.Value);
+//         }
+//         Console.WriteLine();
+//     }
+
+//     public void AddTestItemsGroceryList(){
+//         AddGroceryItem("pigeon eggs", "baker's dozen");
+//         AddGroceryItem("free-range mushrooms", "platoon");
+//         AddGroceryItem("the smelliest of fish", "entire school");            
+//     }
+
+//     // public void JSONSerializeGroceryList(){
+//     //     string jsonString = JsonSerializer.Serialize(GroceryList);
+//     //     Console.WriteLine();
+//     //     Console.WriteLine(jsonString);
+//     //     Console.WriteLine();        
+//     // }
+//     public string JSONSerializeGroceryList(){
+//         string jsonString = JsonSerializer.Serialize(GroceryList);
+//         return jsonString;
+//     }
+
+//     public void WriteGroceryListToJSON(){
+//         string jsonString = JSONSerializeGroceryList();
+//         File.WriteAllText("groceries.json", jsonString);
+//     }
+
+//     public string ReadGroceryListFromJSON(){
+//         string jsonString = File.ReadAllText("groceries.json");
+//         GroceryList = JsonSerializer.Deserialize<Groceries>(jsonString);
+//     }
+
+
+
+
 // }
+
+
+
+

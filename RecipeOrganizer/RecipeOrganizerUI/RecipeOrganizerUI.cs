@@ -7,15 +7,57 @@ public class Program
 {
     public static void Main(string[] args)
     {
- 
+        
+        Recipe.Service.GroceryList grocerylist = new GroceryList();
 
-        Recipe.Service.GroceryList groceries = new GroceryList();
-        groceries.AddTestItemsGroceryList();
-        groceries.ConsolePrintGroceryList();
-        string tmp = groceries.JSONSerializeGroceryList();
-        Console.WriteLine(tmp);
+        // Console.WriteLine(grocerylist.glist);
 
-        File.WriteAllText("groceries.json", tmp);
+        Console.WriteLine(grocerylist.GDict.Count);
+
+        // grocerylist.AddGroceryItem("THE GREATEST BANANA", "THERE CAN ONLY BE ONE");
+        // grocerylist.AddGroceryItem("Less excellent bananas", "Literally a bunch");
+        
+        grocerylist.AddTestGroceryItems();
+        
+        Console.WriteLine(grocerylist.GDict.Count);
+
+        foreach(string k in grocerylist.GDict.Keys){
+            Console.WriteLine(k);
+            Console.WriteLine(grocerylist.GDict[k].ItemDescription);
+            Console.WriteLine(grocerylist.GDict[k].ItemQuantity);            
+            Console.WriteLine();
+        }
+
+        
+        Console.WriteLine(grocerylist.GDict);
+
+        // foreach(Recipe.Service.GroceryItem GI in grocerylist.GList){
+        //     Console.WriteLine(GI.ItemDescription);
+        //     Console.WriteLine(GI.ItemQuantity);
+        // }
+
+        grocerylist.WriteToJSON();
+
+        grocerylist.ReadFromJSON();
+
+        // grocerylist.GList.ForEach(Console.WriteLine);
+
+        
+        // Recipe.Service.Groceries groceries = new Groceries();
+        // groceries.AddTestItemsGroceryList();
+        // groceries.ConsolePrintGroceryList();
+
+        // groceries.WriteGroceryListToJSON();
+
+        // Console.WriteLine();
+        // groceries.ReadGroceryListFromJSON();
+
+
+
+        // string tmp = groceries.JSONSerializeGroceryList();
+        // Console.WriteLine(tmp);
+
+        // File.WriteAllText("groceries.json", tmp);
 
  
 
