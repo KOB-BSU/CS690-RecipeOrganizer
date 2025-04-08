@@ -9,27 +9,22 @@ public class Program
     {
 
         Recipe.Service.Substitutions substitutions = new Substitutions();
-
-        // foreach (string key in substitutions.substitutionsDict.Keys){
-        //     Console.WriteLine(key);        
-        // }
-
-        substitutions.ConsolePrintAllSubstititions();
-        substitutions.AddSubstitution("egg", "better egg");
-        substitutions.AddSubstitution("egg", "a lousy egg");
-        substitutions.AddSubstitution("vanilla", "there is no substititon, you monster");
-        substitutions.ConsolePrintAllSubstititions();
-        substitutions.DeleteSubstitution("vanilla");
-        substitutions.ConsolePrintAllSubstititions();
-        substitutions.WriteToJSON();
         substitutions.ReadFromJSON();
+
+        // substitutions.ConsolePrintAllSubstititions();
+        // substitutions.AddSubstitution("egg", "better egg");
+        // substitutions.AddSubstitution("egg", "a lousy egg");
+        // substitutions.AddSubstitution("vanilla", "there is no substititon, you monster");
+        // substitutions.ConsolePrintAllSubstititions();
+        // substitutions.DeleteSubstitution("vanilla");
+        // substitutions.ConsolePrintAllSubstititions();
+        // substitutions.WriteToJSON();
+        // substitutions.ReadFromJSON();
+        // substitutions.ConsolePrintAllSubstititions();
         
 
 
 
-        // foreach (string key in substitutions.substitutionsDict.Keys){
-        //     Console.WriteLine(key);
-        // }
 
         
         // Recipe.Service.GroceryList grocerylist = new GroceryList();

@@ -36,8 +36,7 @@ public class Recipes
 
 }
 
-public class Substitutions
-{
+public class Substitutions{
 
     public Dictionary<string, List<string>> substitutionsDict;
 
@@ -50,23 +49,19 @@ public class Substitutions
             substitutionsDict[refI] = new List<string>();
         }
         substitutionsDict[refI].Add(subI);
+        WriteToJSON();
     }
 
     public void DeleteSubstitution(string refI){
         if(substitutionsDict.ContainsKey(refI)){
             substitutionsDict.Remove(refI);
         }
+        WriteToJSON();
     }
 
     public void ConsolePrintAllSubstititions(){
         foreach(string refI in substitutionsDict.Keys){
             ConsolePrintSubstititions(refI);
-
-            // Console.WriteLine(key);
-            // foreach(string elem in substitutionsDict[key]){
-            //     Console.WriteLine(elem);
-            // }
-            // Console.WriteLine();            
         }
     }
 
@@ -79,8 +74,6 @@ public class Substitutions
         }else{
             Console.WriteLine(refI+" does not have any stored substitutes.");
         }
-        
-
     }
 
 
@@ -90,25 +83,46 @@ public class Substitutions
     }
 
     public void ReadFromJSON(){
-        string jsonString = File.ReadAllText("substitutions.json");
-        Console.WriteLine(jsonString);
-        var de = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(jsonString)!;
-
-        foreach(string key in de.Keys){
-            Console.WriteLine(key);
-            foreach(string elem in de[key]){
-                Console.WriteLine(elem);
+        if(File.Exists("substitutions.json")){
+            string jsonString = File.ReadAllText("substitutions.json");
+            // Console.WriteLine(jsonString);
+            var deserializedDict = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(jsonString)!;
+            if(deserializedDict.Count > 0){
+                substitutionsDict = deserializedDict;
             }
-            Console.WriteLine();            
         }
+    }
+}
 
+
+public class Groceries{
+    public Dictionary<string, string> groceriesDict;
+    public Groceries(){
+        groceriesDict = new Dictionary<string, string>();
+    }
+    public void AddGrocery(string gItem, string gQuantity){
+        groceriesDict[gItem] = gQuantity;
+    }
+    public void RemoveGrocery(string gItem){
+        if(groceriesDict.ContainsKey(gItem)){
+            groceriesDict.Remove(gItem);
+        }
     }
 
-    // public class Substitution{
-    //     public string? RefIngredient {get;set;}
-    //     public string[]? SubIngredient {get;set;}
-    // }
+    public void ConsolePrintGrocery(string gItem){
+        if(groceriesDict.ContainsKey(gItem)){
+            string gQuantity = groceriesDict[gItem];
+            Console.WriteLine(gItem+"["+gQuantity+"]");
+        }
+    }
+    
+
 }
+
+
+
+
+
 
 
 // public class GroceryItem{
