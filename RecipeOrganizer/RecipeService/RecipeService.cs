@@ -62,6 +62,7 @@ public class Substitutions{
     public void ConsolePrintAllSubstititions(){
         foreach(string refI in substitutionsDict.Keys){
             ConsolePrintSubstititions(refI);
+            Console.WriteLine();
         }
     }
 
@@ -102,20 +103,43 @@ public class Groceries{
     }
     public void AddGrocery(string gItem, string gQuantity){
         groceriesDict[gItem] = gQuantity;
+        WriteToJSON();
     }
     public void RemoveGrocery(string gItem){
         if(groceriesDict.ContainsKey(gItem)){
             groceriesDict.Remove(gItem);
         }
+        WriteToJSON();
     }
 
     public void ConsolePrintGrocery(string gItem){
         if(groceriesDict.ContainsKey(gItem)){
             string gQuantity = groceriesDict[gItem];
-            Console.WriteLine(gItem+"["+gQuantity+"]");
+            Console.WriteLine(gItem+" ["+gQuantity+"]");
         }
     }
     
+    public void ConsolePrintAllGroceries(){
+        foreach(string gItem in groceriesDict.Keys){
+            ConsolePrintGrocery(gItem);
+        }
+    }
+
+    public void WriteToJSON(){
+        string jsonString = JsonSerializer.Serialize(groceriesDict);
+        File.WriteAllText("groceries.json", jsonString);
+    }
+
+    public void ReadFromJSON(){
+        if(File.Exists("groceries.json")){
+            string jsonString = File.ReadAllText("groceries.json");
+            // Console.WriteLine(jsonString);
+            var deserializedDict = JsonSerializer.Deserialize<Dictionary<string, string>>(jsonString)!;
+            if(deserializedDict.Count > 0){
+                groceriesDict = deserializedDict;
+            }
+        }
+    }
 
 }
 
