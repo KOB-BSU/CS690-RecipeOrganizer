@@ -19,15 +19,19 @@ public class Program
         
         while (!exitApp){
             Console.Clear();
+            Console.WriteLine("[key] - Mode");            
             Console.WriteLine("Ingredient Substitutions");
-            Console.WriteLine(" 1 - View Substitutions");
-            Console.WriteLine(" 2 - Add Substitutions");
-            Console.WriteLine(" 3 - Remove Substitutions");            
+            Console.WriteLine(" [1] - View Substitutions");
+            Console.WriteLine(" [2] - Add Substitutions");
+            Console.WriteLine(" [3] - Remove Substitutions");            
             Console.WriteLine("Grocery List");
-            Console.WriteLine(" 4 - View Grocery List");
-            Console.WriteLine(" 5 - Add Grocery List Item");
-            Console.WriteLine(" 6 - Remove Grocery List Item");
-            Console.WriteLine("X - Exit");
+            Console.WriteLine(" [4] - View Grocery List");
+            Console.WriteLine(" [5] - Add Grocery List Item");
+            Console.WriteLine(" [6] - Remove Grocery List Item");
+            Console.WriteLine("Exit Program");            
+            Console.WriteLine(" [X] - Exit");
+            Console.WriteLine();
+            Console.WriteLine("(Enter the key value for your selected mode.)");
             
             var modeVar = Console.ReadLine()!;
             var garbageVar = ""!;
@@ -55,7 +59,7 @@ public class Program
 
                 case "3":
                     Console.Clear();
-                    Console.WriteLine("Enter ingredient substitution to remove");
+                    Console.WriteLine("Enter ingredient (being substituted) to remove");
                     var ingredientSubstitutionToRemove = Console.ReadLine()!;
                     substitutions.DeleteSubstitution(ingredientSubstitutionToRemove);
                     Console.WriteLine("Press any key to continue");
@@ -64,7 +68,6 @@ public class Program
 
                 case "4":
                     Console.Clear();
-                    Console.WriteLine("Grocery List (Item [quantity])");
                     groceries.ConsolePrintAllGroceries();
                     Console.WriteLine("Press any key to continue");
                     garbageVar = Console.ReadLine();
@@ -87,7 +90,6 @@ public class Program
                     Console.WriteLine("Enter grocery item to remove");
                     var groceryItemToRemove = Console.ReadLine()!;
                     groceries.RemoveGrocery(groceryItemToRemove);
-                    Console.WriteLine("Removed "+groceryItemToRemove);
                     Console.WriteLine("Press any key to continue");
                     garbageVar = Console.ReadLine();
                     break;                   
