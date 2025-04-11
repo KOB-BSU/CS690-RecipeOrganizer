@@ -41,7 +41,7 @@ public class Program
                 case "1":
                     Console.Clear();
                     substitutions.ConsolePrintAllSubstititions();
-                    Console.WriteLine("Press any key to continue");
+                    Console.WriteLine("Press enter to continue");
                     garbageVar = Console.ReadLine();
                     break;
                     
