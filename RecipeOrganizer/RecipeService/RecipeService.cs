@@ -40,7 +40,47 @@ namespace Recipe.Service;
 public class Recipes{
     public Dictionary<string, Dictionary<string, List<string>>> recipesDict;
     public Recipes(){
-        recipesDict = Dictionary<string, Dictionary<string, List<string>>>();
+        recipesDict = new Dictionary<string, Dictionary<string, List<string>>>();
+    }
+
+    public void WriteToJSON(){
+        string jsonString = JsonSerializer.Serialize(recipesDict);
+        File.WriteAllText("recipes.json", jsonString);
+    }
+
+    public class Recipe{
+        public Dictionary<string, List<string>> recipe;
+        public Recipe(){
+            recipe = new Dictionary<string, List<string>>();
+            recipe["ingredients"] = new List<string>();
+            recipe["instructions"] = new List<string>();
+            recipe["tags"] = new List<string>();
+        }
+
+        public void AddIngredient(string I, string Q){
+            recipe["ingredients"].Add(Q+" "+I);
+        }
+
+        public void AddInstruction(string I){
+            recipe["instructions"].Add(I);
+        }
+
+        public void AddTag(string T){
+            recipe["tags"].Add(T);
+        }
+
+        public void ConsolePrintRecipe(){
+            foreach(string I in recipe["ingredients"]){
+                Console.WriteLine(I);
+            }
+            Console.WriteLine();
+            foreach(string I in recipe["instructions"]){
+                Console.WriteLine(I);
+            }
+
+        }
+
+        
     }
     
 }
