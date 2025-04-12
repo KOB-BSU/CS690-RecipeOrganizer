@@ -8,33 +8,43 @@ using System.IO;
 
 namespace Recipe.Service;
 
-public class Recipes
-{
-    public class Recipe{
-        public string? RecipeName {get;set;}
-        public List<string> Ingredients {get;set;}
-        public List<string> Quantities {get;set;}
-        public List<string> Steps {get;set;}
+// public class Recipes
+// {
+//     public class Recipe{
+//         public string? RecipeName {get;set;}
+//         public List<string> Ingredients {get;set;}
+//         public List<string> Quantities {get;set;}
+//         public List<string> Steps {get;set;}
 
-        public Recipe(string recipename){
-            RecipeName = recipename;
-            Ingredients = new List<string>();
-            Quantities = new List<string>();
-            Steps = new List<string>();
-        }
+//         public Recipe(string recipename){
+//             RecipeName = recipename;
+//             Ingredients = new List<string>();
+//             Quantities = new List<string>();
+//             Steps = new List<string>();
+//         }
 
-        public void AddIngredientQuantity(string ingredient, string quantity){
-            Ingredients.Add(ingredient);
-            Quantities.Add(quantity);            
-        }
+//         public void AddIngredientQuantity(string ingredient, string quantity){
+//             Ingredients.Add(ingredient);
+//             Quantities.Add(quantity);            
+//         }
 
-        public void AddStep(string step){
-            Steps.Add(step);            
-        }
+//         public void AddStep(string step){
+//             Steps.Add(step);            
+//         }
 
+//     }
+
+// }
+
+
+public class Recipes{
+    public Dictionary<string, Dictionary<string, List<string>>> recipesDict;
+    public Recipes(){
+        recipesDict = Dictionary<string, Dictionary<string, List<string>>>();
     }
-
+    
 }
+
 
 public class Substitutions{
 
