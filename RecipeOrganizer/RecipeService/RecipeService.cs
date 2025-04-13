@@ -9,10 +9,6 @@ using System.IO;
 namespace Recipe.Service;
 
 
-
-
-
-
 public class Recipes{
     public Dictionary<string, Dictionary<string, List<string>>> recipesDict;
     public Recipes(){
@@ -50,10 +46,7 @@ public class Recipes{
         }else{
             Console.WriteLine(recipeName+" is not a stored recipe.");
         }
-    }
-    
-
-
+    }    
 
 }
 
