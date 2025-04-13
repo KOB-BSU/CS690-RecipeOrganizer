@@ -8,35 +8,6 @@ using System.IO;
 
 namespace Recipe.Service;
 
-// public class Recipes
-// {
-//     public class Recipe{
-//         public string? RecipeName {get;set;}
-//         public List<string> Ingredients {get;set;}
-//         public List<string> Quantities {get;set;}
-//         public List<string> Steps {get;set;}
-
-//         public Recipe(string recipename){
-//             RecipeName = recipename;
-//             Ingredients = new List<string>();
-//             Quantities = new List<string>();
-//             Steps = new List<string>();
-//         }
-
-//         public void AddIngredientQuantity(string ingredient, string quantity){
-//             Ingredients.Add(ingredient);
-//             Quantities.Add(quantity);            
-//         }
-
-//         public void AddStep(string step){
-//             Steps.Add(step);            
-//         }
-
-//     }
-
-// }
-
-
 public class Recipes{
     public Dictionary<string, Dictionary<string, List<string>>> recipesDict;
     public Recipes(){
@@ -48,44 +19,36 @@ public class Recipes{
         File.WriteAllText("recipes.json", jsonString);
     }
 
-    // public void CreateNewRecipe(string recipeName){
-    //     recipesDict[recipeName] = new Recipe();
-    // }
-
-    public class Recipe{
-        public Dictionary<string, List<string>> recipe;
-        public Recipe(){
-            recipe = new Dictionary<string, List<string>>();
-            recipe["ingredients"] = new List<string>();
-            recipe["instructions"] = new List<string>();
-            recipe["tags"] = new List<string>();
-        }
-
-        public void AddIngredient(string I, string Q){
-            recipe["ingredients"].Add(Q+" "+I);
-        }
-
-        public void AddInstruction(string I){
-            recipe["instructions"].Add(I);
-        }
-
-        public void AddTag(string T){
-            recipe["tags"].Add(T);
-        }
-
-        public void ConsolePrintRecipe(){
-            foreach(string I in recipe["ingredients"]){
-                Console.WriteLine(I);
-            }
-            Console.WriteLine();
-            foreach(string I in recipe["instructions"]){
-                Console.WriteLine(I);
-            }
-
-        }
-
-        
+    public void AddRecipe(){
+        // Console.Clear();
+        Console.WriteLine("Enter new recipe name:");
+        string newRecipeName = Console.ReadLine()!;
+        // if(newRecipeName != ""){
+        //     recipesDict[newRecipeName] = new Dictionary<string, List<string>>();
+        //     recipesDict[newRecipeName]["ingredients"] = new List<string>();
+        //     recipesDict[newRecipeName]["steps"] = new List<string>();
+        //     recipesDict[newRecipeName]["tags"] = new List<string>();            
+        // }
     }
+
+    // public List<string> RecipeIngredientEntry(){
+    //     Console.Clear();
+    //     Console.WriteLine("Enter quantities and ingredients one line at a time.");
+    //     Console.WriteLine("(Press 'enter' on an empty line to finish.)");
+    //     bool lastEntry = false;
+    //     List<string> ingredientList = new List<string>();
+    //     string ingredientLine = "";
+    //     while(!lastEntry){
+    //         ingredientLine = Console.ReadLine();
+    //         if(ingredientLine == ""){
+    //             lastEntry = true;
+    //         }else{
+    //             ingredientList.Add(ingredientLine);
+    //         }
+    //     }
+    //     return(ingredientList);        
+    // }
+     
     
 }
 

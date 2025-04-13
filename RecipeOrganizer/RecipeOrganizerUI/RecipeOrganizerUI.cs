@@ -7,7 +7,7 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        Console.Clear();
+        // Console.Clear();
         Recipe.Service.Substitutions substitutions = new Substitutions();
         Recipe.Service.Groceries groceries = new Groceries();
         Recipe.Service.Recipes recipes = new Recipes();
@@ -17,12 +17,13 @@ public class Program
 
 
 
+
+        recipes.AddRecipe();
+
+        // recipes.RecipeIngredientEntry();
+        
+        
         recipes.WriteToJSON();
-
-
-
-
-
 
 
 
