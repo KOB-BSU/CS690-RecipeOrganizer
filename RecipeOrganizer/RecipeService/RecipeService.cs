@@ -48,6 +48,10 @@ public class Recipes{
         File.WriteAllText("recipes.json", jsonString);
     }
 
+    // public void CreateNewRecipe(string recipeName){
+    //     recipesDict[recipeName] = new Recipe();
+    // }
+
     public class Recipe{
         public Dictionary<string, List<string>> recipe;
         public Recipe(){

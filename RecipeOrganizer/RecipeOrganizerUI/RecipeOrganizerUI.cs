@@ -10,10 +10,26 @@ public class Program
         Console.Clear();
         Recipe.Service.Substitutions substitutions = new Substitutions();
         Recipe.Service.Groceries groceries = new Groceries();
-        
+        Recipe.Service.Recipes recipes = new Recipes();
         substitutions.ReadFromJSON();
 
         groceries.ReadFromJSON();
+
+
+
+        recipes.WriteToJSON();
+
+
+
+
+
+
+
+
+
+
+
+
 
         bool exitApp = false;
         
