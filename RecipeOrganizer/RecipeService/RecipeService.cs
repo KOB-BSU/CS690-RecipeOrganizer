@@ -18,6 +18,16 @@ public class Recipes{
         string jsonString = JsonSerializer.Serialize(recipesDict);
         File.WriteAllText("recipes.json", jsonString);
     }
+    public void ReadFromJSON(){
+        if(File.Exists("recipes.json")){
+            string jsonString = File.ReadAllText("recipes.json");
+            Console.WriteLine(jsonString);
+            var deserializedDict = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, List<string>>>>(jsonString)!;
+            if(deserializedDict.Count > 0){
+                recipesDict = deserializedDict;
+            }
+        }
+    }
     public void CreateEmptyRecipe(string recipeName){
         recipesDict[recipeName] = new Dictionary<string, List<string>>();
         recipesDict[recipeName]["ingredientsList"] = new List<string>();
@@ -25,12 +35,24 @@ public class Recipes{
         recipesDict[recipeName]["tagsList"] = new List<string>();
     }
 
+    public void RemoveRecipe(string recipeName){
+        if(recipesDict.ContainsKey(recipeName)){
+            recipesDict.Remove(recipeName);
+            Console.WriteLine("Removed "+recipeName);
+        }
+        if(recipesDict.Count == 0){
+            Console.WriteLine("That was the last recipe.");
+        }
+        WriteToJSON();
+    }
+
     public void AddIngredientToRecipe(string recipeName, string ingredient){
         if(recipesDict.ContainsKey(recipeName)){
             recipesDict[recipeName]["ingredientsList"].Add(ingredient);
         }else{
             Console.WriteLine(recipeName+" is not a stored recipe.");
-        }    
+        }
+        WriteToJSON();
     }
 
     public void AddInstructionToRecipe(string recipeName, string instruction){
@@ -39,6 +61,7 @@ public class Recipes{
         }else{
             Console.WriteLine(recipeName+" is not a stored recipe.");
         }
+        WriteToJSON();
     }
     public void AddTagToRecipe(string recipeName, string tag){
         if(recipesDict.ContainsKey(recipeName)){
@@ -46,61 +69,33 @@ public class Recipes{
         }else{
             Console.WriteLine(recipeName+" is not a stored recipe.");
         }
-    }    
+        WriteToJSON();
+    }
+
+    public void ConsolePrintRecipe(string recipeName){
+        if(recipesDict.ContainsKey(recipeName)){
+            Console.WriteLine("-Recipe: "+recipeName);
+            Console.WriteLine("-Ingredients:");
+            Console.WriteLine(string.Join("\n", recipesDict[recipeName]["ingredientsList"]));
+            Console.WriteLine("-Instructions:");
+            Console.WriteLine(string.Join("\n", recipesDict[recipeName]["instructionsList"]));
+        }else{
+            Console.WriteLine(recipeName + " is not a stored recipe.");
+        }
+    }
+
+    public void ConsolePrintRecipeNames(){
+        if(recipesDict.Count > 0){
+            Console.WriteLine("-Recipe names:");
+            foreach(string recipeName in recipesDict.Keys){
+                Console.WriteLine(recipeName);
+            }
+        }else{
+            Console.WriteLine("You have no stored recipes.");
+        }
+    }
 
 }
-
-
-
-
-
-
-
-
-// public class Recipes{
-//     public Dictionary<string, Dictionary<string, List<string>>> recipesDict;
-//     public Recipes(){
-//         recipesDict = new Dictionary<string, Dictionary<string, List<string>>>();
-//     }
-
-//     public void WriteToJSON(){
-//         string jsonString = JsonSerializer.Serialize(recipesDict);
-//         File.WriteAllText("recipes.json", jsonString);
-//     }
-
-//     public void AddRecipe(){
-//         // Console.Clear();
-//         Console.WriteLine("Enter new recipe name:");
-//         string newRecipeName = Console.ReadLine()!;
-//         // if(newRecipeName != ""){
-//         //     recipesDict[newRecipeName] = new Dictionary<string, List<string>>();
-//         //     recipesDict[newRecipeName]["ingredients"] = new List<string>();
-//         //     recipesDict[newRecipeName]["steps"] = new List<string>();
-//         //     recipesDict[newRecipeName]["tags"] = new List<string>();            
-//         // }
-//     }
-
-//     // public List<string> RecipeIngredientEntry(){
-//     //     Console.Clear();
-//     //     Console.WriteLine("Enter quantities and ingredients one line at a time.");
-//     //     Console.WriteLine("(Press 'enter' on an empty line to finish.)");
-//     //     bool lastEntry = false;
-//     //     List<string> ingredientList = new List<string>();
-//     //     string ingredientLine = "";
-//     //     while(!lastEntry){
-//     //         ingredientLine = Console.ReadLine();
-//     //         if(ingredientLine == ""){
-//     //             lastEntry = true;
-//     //         }else{
-//     //             ingredientList.Add(ingredientLine);
-//     //         }
-//     //     }
-//     //     return(ingredientList);        
-//     // }
-     
-    
-// }
-
 
 public class Substitutions{
 

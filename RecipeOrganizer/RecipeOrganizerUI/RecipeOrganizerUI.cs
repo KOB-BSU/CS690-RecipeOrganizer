@@ -12,8 +12,8 @@ public class Program
         Recipe.Service.Groceries groceries = new Groceries();
         Recipe.Service.Recipes recipes = new Recipes();
         substitutions.ReadFromJSON();
-
         groceries.ReadFromJSON();
+        recipes.ReadFromJSON();
 
 
 
@@ -35,7 +35,7 @@ public class Program
         bool exitApp = false;
         
         while (!exitApp){
-            Console.Clear();
+            // Console.Clear();
             Console.WriteLine("[key] - Mode");            
             Console.WriteLine("Ingredient Substitutions");
             Console.WriteLine(" [1] - View Substitutions");
@@ -117,15 +117,18 @@ public class Program
                     Console.Clear();
                     Console.WriteLine("RECIPE DEV");
 
-                    recipes.CreateEmptyRecipe("scrambled eggs");
-                    recipes.AddIngredientToRecipe("scrambled eggs", "two eggs");
-                    recipes.AddInstructionToRecipe("scrambled eggs", "scramble those eggs");
-                    recipes.AddInstructionToRecipe("scrambled eggs", "cook them however you like them");
-                    recipes.AddTagToRecipe("scrambled eggs", "egg");
-                    recipes.AddTagToRecipe("scrambled eggs", "eggs");
-                    recipes.AddTagToRecipe("scrambled eggs", "scrambled");
-                    recipes.AddTagToRecipe("scrambled eggs", "breakfast");
-                    recipes.WriteToJSON();
+                    // recipes.CreateEmptyRecipe("scrambled eggs");
+                    // recipes.AddIngredientToRecipe("scrambled eggs", "two eggs");
+                    // recipes.AddInstructionToRecipe("scrambled eggs", "scramble those eggs");
+                    // recipes.AddInstructionToRecipe("scrambled eggs", "cook them however you like them");
+                    // recipes.AddTagToRecipe("scrambled eggs", "egg");
+                    // recipes.AddTagToRecipe("scrambled eggs", "eggs");
+                    // recipes.AddTagToRecipe("scrambled eggs", "scrambled");
+                    // recipes.AddTagToRecipe("scrambled eggs", "breakfast");
+                    // recipes.WriteToJSON();
+                    recipes.ConsolePrintRecipeNames();
+
+                    recipes.ConsolePrintRecipe("scrambled eggs");
                     Console.WriteLine("Press enter to continue.");
                     garbageVar = Console.ReadLine();
                     break;
@@ -134,7 +137,6 @@ public class Program
                     Console.Clear();
                     exitApp = true;
                     break;
-
                     
             }         
         }
