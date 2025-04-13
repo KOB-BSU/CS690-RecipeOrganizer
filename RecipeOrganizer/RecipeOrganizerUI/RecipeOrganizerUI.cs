@@ -18,12 +18,12 @@ public class Program
 
 
 
-        recipes.AddRecipe();
+        // recipes.AddRecipe();
 
         // recipes.RecipeIngredientEntry();
         
         
-        recipes.WriteToJSON();
+        // recipes.WriteToJSON();
 
 
 
@@ -45,6 +45,8 @@ public class Program
             Console.WriteLine(" [4] - View Grocery List");
             Console.WriteLine(" [5] - Add Grocery List Item");
             Console.WriteLine(" [6] - Remove Grocery List Item");
+            Console.WriteLine("RECIPE DEV");
+            Console.WriteLine(" [7] - RECIPE DEV");
             Console.WriteLine("Exit Program");            
             Console.WriteLine(" [X] - Exit");
             Console.WriteLine();
@@ -109,7 +111,26 @@ public class Program
                     groceries.RemoveGrocery(groceryItemToRemove);
                     Console.WriteLine("Press enter to continue.");
                     garbageVar = Console.ReadLine();
-                    break;                   
+                    break;
+
+                case "7":
+                    Console.Clear();
+                    Console.WriteLine("RECIPE DEV");
+
+                    recipes.CreateEmptyRecipe("scrambled eggs");
+                    recipes.AddIngredientToRecipe("scrambled eggs", "two eggs");
+                    recipes.AddInstructionToRecipe("scrambled eggs", "scramble those eggs");
+                    recipes.AddTagToRecipe("scrambled eggs", "egg");
+                    recipes.AddTagToRecipe("scrambled eggs", "eggs");
+                    recipes.AddTagToRecipe("scrambled eggs", "scrambled");
+                    recipes.AddTagToRecipe("scrambled eggs", "breakfast");                    
+                    recipes.WriteToJSON();
+
+
+
+                    Console.WriteLine("Press enter to continue.");
+                    garbageVar = Console.ReadLine();
+                    break;
 
                 case "X":
                     Console.Clear();
