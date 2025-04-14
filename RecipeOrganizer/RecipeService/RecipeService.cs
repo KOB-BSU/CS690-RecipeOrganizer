@@ -109,7 +109,7 @@ public class Recipes{
                         foundRecipes.Add(recipeName);
                     }
                 }
-                Console.WriteLine("Recipes tagged as "+tag);
+                Console.WriteLine("Recipes tagged as '"+tag+"'");
                 Console.WriteLine(string.Join("\n", foundRecipes));                
             }
         }else{

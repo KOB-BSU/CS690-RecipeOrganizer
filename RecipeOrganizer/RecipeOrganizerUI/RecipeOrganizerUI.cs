@@ -15,22 +15,9 @@ public class Program
         groceries.ReadFromJSON();
         recipes.ReadFromJSON();
 
-
-
-
         // recipes.AddRecipe();
-
         // recipes.RecipeIngredientEntry();
-        
-        
         // recipes.WriteToJSON();
-
-
-
-
-
-
-
 
         bool exitApp = false;
         
@@ -119,7 +106,6 @@ public class Program
 
                 case "7":
                     Console.Clear();
-                    Console.WriteLine("FIND RECIPES GOES HERE");
                     Console.WriteLine("Input a tag to search and hit 'enter' or press 'enter' to view all recipe names.");
                     var searchTag = Console.ReadLine()!;
                     recipes.FindRecipes(searchTag);
@@ -129,8 +115,9 @@ public class Program
 
                 case "8":
                     Console.Clear();
-                    Console.WriteLine(">>>VIEW RECIPE GOES HERE");
-
+                    Console.WriteLine("Enter a recipe name:");
+                    var lookupRecipeName = Console.ReadLine();
+                    recipes.ConsolePrintRecipe(lookupRecipeName);
                     Console.WriteLine("Press enter to continue.");
                     garbageVar = Console.ReadLine();
                     break;
