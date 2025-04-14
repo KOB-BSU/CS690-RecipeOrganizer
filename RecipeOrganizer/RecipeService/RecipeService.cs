@@ -55,6 +55,11 @@ public class Recipes{
         WriteToJSON();
     }
 
+    public void ClearRecipeIngredients(string recipeName){
+        recipesDict[recipeName]["ingredientsList"] = new List<string>();
+        WriteToJSON();
+    }
+
     public void AddInstructionToRecipe(string recipeName, string instruction){
         if(recipesDict.ContainsKey(recipeName)){
             recipesDict[recipeName]["instructionsList"].Add(instruction);
@@ -63,12 +68,23 @@ public class Recipes{
         }
         WriteToJSON();
     }
+
+    public void ClearRecipeInstructions(string recipeName){
+        recipesDict[recipeName]["instructionsList"] = new List<string>();
+        WriteToJSON();
+    }
+
     public void AddTagToRecipe(string recipeName, string tag){
         if(recipesDict.ContainsKey(recipeName)){
             recipesDict[recipeName]["tagsList"].Add(tag);
         }else{
             Console.WriteLine(recipeName+" is not a stored recipe.");
         }
+        WriteToJSON();
+    }
+
+    public void ClearRecipeTags(string recipeName){
+        recipesDict[recipeName]["tagsList"] = new List<string>();
         WriteToJSON();
     }
 
@@ -97,7 +113,7 @@ public class Recipes{
 
     public void FindRecipes(string tag){
         if(recipesDict.Count > 0){
-            if(tag == ""){
+            if(tag.Length == 0){
                 var allRecipeNames = new List<string>(recipesDict.Keys);
                 allRecipeNames.Sort();
                 Console.WriteLine("-All Stored Recipe Names:");

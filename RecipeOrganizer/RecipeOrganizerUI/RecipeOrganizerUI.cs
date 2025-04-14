@@ -44,6 +44,7 @@ public class Program
             Console.WriteLine("(Type the key for your selected mode, then the enter key.)");
             
             var modeVar = Console.ReadLine()!;
+            var subModeVar = "";
             var garbageVar = ""!;
 
             Console.Clear();
@@ -116,7 +117,7 @@ public class Program
                 case "8":
                     Console.Clear();
                     Console.WriteLine("Enter a recipe name:");
-                    var lookupRecipeName = Console.ReadLine();
+                    var lookupRecipeName = Console.ReadLine()!;
                     recipes.ConsolePrintRecipe(lookupRecipeName);
                     Console.WriteLine("Press enter to continue.");
                     garbageVar = Console.ReadLine();
@@ -124,8 +125,112 @@ public class Program
 
                 case "9":
                     Console.Clear();
-                    Console.WriteLine(">>>ADD/EDIT RECIPE GOES HERE");
+                    Console.WriteLine("Enter recipe name (new or previously stored):");
+                    var addEditRecipeName = Console.ReadLine()!;
+                    if(recipes.recipesDict.ContainsKey(addEditRecipeName)){
+                        Console.Clear();
+                        Console.WriteLine("(Editing "+addEditRecipeName+")");
+                        Console.WriteLine("[key] - Recipe Edit Option");
+                        Console.WriteLine(" [1] - Re-enter Ingredients");
+                        Console.WriteLine(" [2] - Re-enter Instructions");
+                        Console.WriteLine(" [3] - Re-enter Tags");
+                        Console.WriteLine(" [X] - Cancel");
+                        Console.WriteLine();
+                        Console.WriteLine("(Type the key for your selected edit, then the enter key.)");
+                        subModeVar = Console.ReadLine()!;
+                        Console.Clear();
+                        switch(subModeVar.ToUpper()){
+                            case "1":
+                                Console.Clear();
+                                bool allIngredientsEntered = false;
+                                Console.WriteLine("Type in your recipe ingredients and hit 'enter'. Hit 'enter' again when all ingredients are entered.");
+                                Console.WriteLine("(Recommended format is quantity then ingredient.)");
+                                recipes.ClearRecipeIngredients(addEditRecipeName);
+                                while(!allIngredientsEntered){
+                                    var enteredIngredient = Console.ReadLine()!;
+                                    if(enteredIngredient.Length == 0){
+                                        allIngredientsEntered = true;
+                                    }else{
+                                        recipes.AddIngredientToRecipe(addEditRecipeName, enteredIngredient);
+                                    }
+                                }
+                                break;
 
+                            case "2":
+                                Console.Clear();
+                                bool allInstructionsEntered = false;
+                                Console.WriteLine("Re-enter your recipe instructions and hit 'enter'. Hit 'enter' again when all instructions are entered.");
+                                recipes.ClearRecipeInstructions(addEditRecipeName);
+                                while(!allInstructionsEntered){
+                                    var enteredInstruction = Console.ReadLine()!;
+                                    if(enteredInstruction.Length == 0){
+                                        allInstructionsEntered = true;
+                                    }else{
+                                        recipes.AddInstructionToRecipe(addEditRecipeName, enteredInstruction);
+                                    }
+                                }
+                                break;
+
+                            case "3":
+                                Console.Clear();
+                                bool allTagsEntered = false;
+                                Console.WriteLine("Re-enter your recipe tags and hit 'enter'. Hit 'enter' again when all tags are entered.");
+                                recipes.ClearRecipeTags(addEditRecipeName);
+                                while(!allTagsEntered){
+                                    var enteredTag = Console.ReadLine()!;
+                                    if(enteredTag.Length == 0){
+                                        allTagsEntered = true;
+                                    }
+                                    else{
+                                        recipes.AddTagToRecipe(addEditRecipeName, enteredTag);
+                                    }
+                                }
+                                break;
+
+                            
+
+                        }
+
+                        
+                    }else{
+                        Console.Clear();
+                        Console.WriteLine("Adding "+addEditRecipeName+" as new reicpe.");
+                        recipes.CreateEmptyRecipe(addEditRecipeName);
+                        bool allIngredientsEntered = false;
+                        Console.WriteLine("Type in your recipe ingredients and hit 'enter'. Hit 'enter' again when all ingredients are entered.");
+                        Console.WriteLine("(Recommended format is quantity then ingredient.)");                        
+                        while(!allIngredientsEntered){
+                            var enteredIngredient = Console.ReadLine()!;
+                            if(enteredIngredient.Length == 0){
+                                allIngredientsEntered = true;
+                            }else{
+                                recipes.AddIngredientToRecipe(addEditRecipeName, enteredIngredient);
+                            }
+                        }
+                        bool allInstructionsEntered = false;
+                        Console.WriteLine("Type in your recipe instructions and hit 'enter'. Hit 'enter' again when all instructions are entered.");
+                        while(!allInstructionsEntered){
+                            var enteredInstruction = Console.ReadLine()!;
+                            if(enteredInstruction.Length == 0){
+                                allInstructionsEntered = true;
+                            }else{
+                                recipes.AddInstructionToRecipe(addEditRecipeName, enteredInstruction);
+                            }
+                        }
+                        bool allTagsEntered = false;
+                        Console.WriteLine("Type in your recipe tags and hit 'enter'. Hit 'enter' again when all tags are entered.");
+                        while(!allTagsEntered){
+                            var enteredTag = Console.ReadLine()!;
+                            if(enteredTag.Length == 0){
+                                allTagsEntered = true;
+                            }
+                            else{
+                                recipes.AddTagToRecipe(addEditRecipeName, enteredTag);
+                            }
+                        }
+                        Console.WriteLine(addEditRecipeName+" has been stored in recipes.");
+                    }
+                    subModeVar = "";                    
                     Console.WriteLine("Press enter to continue.");
                     garbageVar = Console.ReadLine();
                     break;
@@ -140,41 +245,41 @@ public class Program
 
                 
 
-                case "D":
-                    Console.Clear();
-                    Console.WriteLine("RECIPE DEV");
+                // case "D":
+                //     Console.Clear();
+                //     Console.WriteLine("RECIPE DEV");
 
-                    recipes.CreateEmptyRecipe("scrambled eggs");
-                    recipes.AddIngredientToRecipe("scrambled eggs", "eggs");
-                    recipes.AddInstructionToRecipe("scrambled eggs", "scramble the eggs");
-                    recipes.AddInstructionToRecipe("scrambled eggs", "cook in pan to desired doneness");
-                    recipes.AddTagToRecipe("scrambled eggs", "eggs");
-                    recipes.AddTagToRecipe("scrambled eggs", "breakfast");
+                //     recipes.CreateEmptyRecipe("scrambled eggs");
+                //     recipes.AddIngredientToRecipe("scrambled eggs", "eggs");
+                //     recipes.AddInstructionToRecipe("scrambled eggs", "scramble the eggs");
+                //     recipes.AddInstructionToRecipe("scrambled eggs", "cook in pan to desired doneness");
+                //     recipes.AddTagToRecipe("scrambled eggs", "eggs");
+                //     recipes.AddTagToRecipe("scrambled eggs", "breakfast");
 
-                    recipes.CreateEmptyRecipe("oatmeal");
-                    recipes.AddIngredientToRecipe("oatmeal", "1/2 c oats");
-                    recipes.AddIngredientToRecipe("oatmeal", "1/2 c water");                    
-                    recipes.AddInstructionToRecipe("oatmeal", "combine in saucepan");
-                    recipes.AddInstructionToRecipe("oatmeal", "boil for three minutes");
-                    recipes.AddTagToRecipe("oatmeal", "oats");
-                    recipes.AddTagToRecipe("oatmeal", "breakfast");
+                //     recipes.CreateEmptyRecipe("oatmeal");
+                //     recipes.AddIngredientToRecipe("oatmeal", "1/2 c oats");
+                //     recipes.AddIngredientToRecipe("oatmeal", "1/2 c water");                    
+                //     recipes.AddInstructionToRecipe("oatmeal", "combine in saucepan");
+                //     recipes.AddInstructionToRecipe("oatmeal", "boil for three minutes");
+                //     recipes.AddTagToRecipe("oatmeal", "oats");
+                //     recipes.AddTagToRecipe("oatmeal", "breakfast");
 
 
-                    // recipes.CreateEmptyRecipe("scrambled eggs");
-                    // recipes.AddIngredientToRecipe("scrambled eggs", "two eggs");
-                    // recipes.AddInstructionToRecipe("scrambled eggs", "scramble those eggs");
-                    // recipes.AddInstructionToRecipe("scrambled eggs", "cook them however you like them");
-                    // recipes.AddTagToRecipe("scrambled eggs", "egg");
-                    // recipes.AddTagToRecipe("scrambled eggs", "eggs");
-                    // recipes.AddTagToRecipe("scrambled eggs", "scrambled");
-                    // recipes.AddTagToRecipe("scrambled eggs", "breakfast");
-                    // recipes.WriteToJSON();
-                    recipes.ConsolePrintRecipeNames();
+                //     // recipes.CreateEmptyRecipe("scrambled eggs");
+                //     // recipes.AddIngredientToRecipe("scrambled eggs", "two eggs");
+                //     // recipes.AddInstructionToRecipe("scrambled eggs", "scramble those eggs");
+                //     // recipes.AddInstructionToRecipe("scrambled eggs", "cook them however you like them");
+                //     // recipes.AddTagToRecipe("scrambled eggs", "egg");
+                //     // recipes.AddTagToRecipe("scrambled eggs", "eggs");
+                //     // recipes.AddTagToRecipe("scrambled eggs", "scrambled");
+                //     // recipes.AddTagToRecipe("scrambled eggs", "breakfast");
+                //     // recipes.WriteToJSON();
+                //     recipes.ConsolePrintRecipeNames();
 
-                    recipes.ConsolePrintRecipe("scrambled eggs");
-                    Console.WriteLine("Press enter to continue.");
-                    garbageVar = Console.ReadLine();
-                    break;
+                //     recipes.ConsolePrintRecipe("scrambled eggs");
+                //     Console.WriteLine("Press enter to continue.");
+                //     garbageVar = Console.ReadLine();
+                //     break;
 
                 case "X":
                     Console.Clear();
