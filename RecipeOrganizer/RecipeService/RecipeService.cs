@@ -21,7 +21,7 @@ public class Recipes{
     public void ReadFromJSON(){
         if(File.Exists("recipes.json")){
             string jsonString = File.ReadAllText("recipes.json");
-            Console.WriteLine(jsonString);
+            // Console.WriteLine(jsonString);
             var deserializedDict = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, List<string>>>>(jsonString)!;
             if(deserializedDict.Count > 0){
                 recipesDict = deserializedDict;
@@ -89,6 +89,28 @@ public class Recipes{
             Console.WriteLine("-Recipe names:");
             foreach(string recipeName in recipesDict.Keys){
                 Console.WriteLine(recipeName);
+            }
+        }else{
+            Console.WriteLine("You have no stored recipes.");
+        }
+    }
+
+    public void FindRecipes(string tag){
+        if(recipesDict.Count > 0){
+            if(tag == ""){
+                var allRecipeNames = new List<string>(recipesDict.Keys);
+                allRecipeNames.Sort();
+                Console.WriteLine("-All Stored Recipe Names:");
+                Console.WriteLine(string.Join("\n", allRecipeNames));
+            }else{
+                var foundRecipes = new List<string>();
+                foreach(string recipeName in recipesDict.Keys){
+                    if(recipesDict[recipeName]["tagsList"].Contains(tag)){
+                        foundRecipes.Add(recipeName);
+                    }
+                }
+                Console.WriteLine("Recipes tagged as "+tag);
+                Console.WriteLine(string.Join("\n", foundRecipes));                
             }
         }else{
             Console.WriteLine("You have no stored recipes.");
