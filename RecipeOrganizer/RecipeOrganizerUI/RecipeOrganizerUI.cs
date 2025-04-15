@@ -7,7 +7,7 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        // Console.Clear();
+        Console.Clear();
         Recipe.Service.Substitutions substitutions = new Substitutions();
         Recipe.Service.Groceries groceries = new Groceries();
         Recipe.Service.Recipes recipes = new Recipes();
@@ -15,14 +15,11 @@ public class Program
         groceries.ReadFromJSON();
         recipes.ReadFromJSON();
 
-        // recipes.AddRecipe();
-        // recipes.RecipeIngredientEntry();
-        // recipes.WriteToJSON();
 
         bool exitApp = false;
         
         while (!exitApp){
-            // Console.Clear();
+            Console.Clear();
             Console.WriteLine("[key] - Mode");            
             Console.WriteLine("Ingredient Substitutions");
             Console.WriteLine(" [1] - View Substitutions");
@@ -284,118 +281,10 @@ public class Program
                 case "X":
                     Console.Clear();
                     exitApp = true;
-                    break;
-                    
+                    break;                    
             }         
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // Recipe.Service.Substitutions substitutions = new Substitutions();
-        // substitutions.ReadFromJSON();
-
-
-        // substitutions.ConsolePrintAllSubstititions();
-        // substitutions.AddSubstitution("egg", "better egg");
-        // substitutions.AddSubstitution("egg", "a lousy egg");
-        // substitutions.AddSubstitution("vanilla", "there is no substititon, you monster");
-        // substitutions.ConsolePrintAllSubstititions();
-        // substitutions.DeleteSubstitution("vanilla");
-        // substitutions.ConsolePrintAllSubstititions();
-        // substitutions.WriteToJSON();
-        // substitutions.ReadFromJSON();
-        // substitutions.ConsolePrintAllSubstititions();
-
-        // Recipe.Service.Groceries groceries = new Groceries();
-        // groceries.ReadFromJSON();
-        // groceries.AddGrocery("eggs", "dozen");
-        // groceries.AddGrocery("apples", "6");
-        // groceries.AddGrocery("oatmeal", "4 lbs");
-        // groceries.ConsolePrintAllGroceries();
-        // groceries.RemoveGrocery("apples");
-        // groceries.WriteToJSON();
-        
-        
-
-
-
-
-        
-        // Recipe.Service.GroceryList grocerylist = new GroceryList();
-
-        // Console.WriteLine(grocerylist.glist);
-
-        // Console.WriteLine(grocerylist.GDict.Count);
-
-        // grocerylist.AddGroceryItem("THE GREATEST BANANA", "THERE CAN ONLY BE ONE");
-        // grocerylist.AddGroceryItem("Less excellent bananas", "Literally a bunch");
-        
-        // grocerylist.AddTestGroceryItems();
-        
-        // Console.WriteLine(grocerylist.GDict.Count);
-
-        // foreach(string k in grocerylist.GDict.Keys){
-        //     Console.WriteLine(k);
-        //     Console.WriteLine(grocerylist.GDict[k].ItemDescription);
-        //     Console.WriteLine(grocerylist.GDict[k].ItemQuantity);            
-        //     Console.WriteLine();
-        // }
-
-        
-        // Console.WriteLine(grocerylist.GDict);
-
-        // foreach(Recipe.Service.GroceryItem GI in grocerylist.GList){
-        //     Console.WriteLine(GI.ItemDescription);
-        //     Console.WriteLine(GI.ItemQuantity);
-        // }
-
-        // grocerylist.WriteToJSON();
-
-        // grocerylist.ReadFromJSON();
-
-        // grocerylist.GList.ForEach(Console.WriteLine);
-
-        
-        // Recipe.Service.Groceries groceries = new Groceries();
-        // groceries.AddTestItemsGroceryList();
-        // groceries.ConsolePrintGroceryList();
-
-        // groceries.WriteGroceryListToJSON();
-
-        // Console.WriteLine();
-        // groceries.ReadGroceryListFromJSON();
-
-
-
-        // string tmp = groceries.JSONSerializeGroceryList();
-        // Console.WriteLine(tmp);
-
-        // File.WriteAllText("groceries.json", tmp);
-
- 
-
-        
-
-        // Console.WriteLine();
-        // Console.WriteLine(Directory.GetFiles(@"..//"));
-
-
-
-
-
-
         Console.WriteLine("Goodbye. (Your patience is appreciated.)");
-        
     }
 
 }
