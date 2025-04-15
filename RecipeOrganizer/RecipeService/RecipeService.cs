@@ -1,25 +1,26 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
-//https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/how-to
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-
 namespace Recipe.Service;
-
+//Recipe.Service contains classes for recipes, ingredient substitutions, and the grocery list
+//These three classes share common functions for WriteToJSON and ReadFromJSON but they're individually pathed and customized to the corresponding data structure.
+//All data used by each class is stored in a single dictionary (though they're structured differently), and is read/written from/to a unique, hard-pathed JSON file.
+//This approach requires careful serialization/deserialization, but that's handled by the WriteToJSON and ReadFromJSON functions, respectively.
 
 public class Recipes{
     public Dictionary<string, Dictionary<string, List<string>>> recipesDict;
     public Recipes(){
         recipesDict = new Dictionary<string, Dictionary<string, List<string>>>();
     }
-    //Needs test
+    //Stores the recipesDict in recipes.json
     public void WriteToJSON(){
         string jsonString = JsonSerializer.Serialize(recipesDict);
         File.WriteAllText("recipes.json", jsonString);
     }
-    //Needs test
+    //Reads the recipesDict from recipes.json
     public void ReadFromJSON(){
         if(File.Exists("recipes.json")){
             string jsonString = File.ReadAllText("recipes.json");
@@ -30,15 +31,14 @@ public class Recipes{
             }
         }
     }
-    //Needs test
+    //Creates the entry in recipesDict for a new recipe (recipeName), with empty lists for ingredients, instructions, and tags
     public void CreateEmptyRecipe(string recipeName){
         recipesDict[recipeName] = new Dictionary<string, List<string>>();
         recipesDict[recipeName]["ingredientsList"] = new List<string>();
         recipesDict[recipeName]["instructionsList"] = new List<string>();
         recipesDict[recipeName]["tagsList"] = new List<string>();
     }
-
-    //Needs test
+    //Purges a recipe from the recipesDict if there's an entry matching recipeName
     public void RemoveRecipe(string recipeName){
         if(recipesDict.ContainsKey(recipeName)){
             recipesDict.Remove(recipeName);
@@ -49,8 +49,7 @@ public class Recipes{
         }
         WriteToJSON();
     }
-
-    //Needs test
+    //Appends an ingredient line to the ingredientsList list in recipesDict[recipeName]
     public void AddIngredientToRecipe(string recipeName, string ingredient){
         if(recipesDict.ContainsKey(recipeName)){
             recipesDict[recipeName]["ingredientsList"].Add(ingredient);
@@ -59,14 +58,12 @@ public class Recipes{
         }
         WriteToJSON();
     }
-
-    //Needs test
+    //Empties the contents of the ingredientsList in recipesDict[recipeName]
     public void ClearRecipeIngredients(string recipeName){
         recipesDict[recipeName]["ingredientsList"] = new List<string>();
         WriteToJSON();
     }
-
-    //Needs test
+    //Appends an instruction line to the instructionsList list in recipesDict[recipeName]
     public void AddInstructionToRecipe(string recipeName, string instruction){
         if(recipesDict.ContainsKey(recipeName)){
             recipesDict[recipeName]["instructionsList"].Add(instruction);
@@ -75,14 +72,12 @@ public class Recipes{
         }
         WriteToJSON();
     }
-
-    //Needs test
+    //Empties the contents of the instructionsList in recipesDict[recipeName]
     public void ClearRecipeInstructions(string recipeName){
         recipesDict[recipeName]["instructionsList"] = new List<string>();
         WriteToJSON();
     }
-
-    //Needs test
+    //Appends a tag to the tagssList list in recipesDict[recipeName]
     public void AddTagToRecipe(string recipeName, string tag){
         if(recipesDict.ContainsKey(recipeName)){
             recipesDict[recipeName]["tagsList"].Add(tag);
@@ -91,14 +86,12 @@ public class Recipes{
         }
         WriteToJSON();
     }
-
-    //Needs test
+    //Empties the contents of the tagsList in recipesDict[recipeName]
     public void ClearRecipeTags(string recipeName){
         recipesDict[recipeName]["tagsList"] = new List<string>();
         WriteToJSON();
     }
-
-    //Needs test
+    //Prints the entirety of a single recipe (recipeName) to the console assuming it exists in recipesDict
     public void ConsolePrintRecipe(string recipeName){
         if(recipesDict.ContainsKey(recipeName)){
             Console.WriteLine("-Recipe: "+recipeName);
@@ -106,12 +99,13 @@ public class Recipes{
             Console.WriteLine(string.Join("\n", recipesDict[recipeName]["ingredientsList"]));
             Console.WriteLine("-Instructions:");
             Console.WriteLine(string.Join("\n", recipesDict[recipeName]["instructionsList"]));
+            Console.WriteLine("-Tags:");
+            Console.WriteLine(string.Join(",", recipesDict[recipeName]["tagsList"]));
         }else{
             Console.WriteLine(recipeName + " is not a stored recipe.");
         }
     }
-
-    //Needs test
+    //Prints the names of all recipes to the console assuming recipesDict is non-empty
     public void ConsolePrintRecipeNames(){
         if(recipesDict.Count > 0){
             Console.WriteLine("-Recipe names:");
@@ -122,8 +116,8 @@ public class Recipes{
             Console.WriteLine("You have no stored recipes.");
         }
     }
-
-    //Needs test
+    //This method does double duty and can either print everything matching a specified tag (tag) or,
+    // if given an empty string value for tag, prints a sorted list of recipe names to the console.
     public void FindRecipes(string tag){
         if(recipesDict.Count > 0){
             if(tag.Length == 0){
@@ -155,8 +149,8 @@ public class Substitutions{
     public Substitutions(){
         substitutionsDict = new Dictionary<string, List<string>>();
     }
-
-    //Needs test
+    //Adds a reference ingredient (refI) to substitutionsDict and appends a substitution ingredient (subI)
+    //to the corresponding list.
     public void AddSubstitution(string refI, string subI){
         if(!substitutionsDict.ContainsKey(refI)){
             substitutionsDict[refI] = new List<string>();
@@ -164,8 +158,7 @@ public class Substitutions{
         substitutionsDict[refI].Add(subI);
         WriteToJSON();
     }
-
-    //Needs test
+    //Deletes a reference ingredient (refI) from substitutionsDict and its substitution ingredient list.
     public void DeleteSubstitution(string refI){
         if(substitutionsDict.ContainsKey(refI)){
             substitutionsDict.Remove(refI);
@@ -176,8 +169,7 @@ public class Substitutions{
         }
         WriteToJSON();
     }
-
-    //Needs test
+    //Prints all stored substitutions to the console
     public void ConsolePrintAllSubstititions(){
         if(substitutionsDict.Count > 0){
             foreach(string refI in substitutionsDict.Keys){
@@ -188,8 +180,7 @@ public class Substitutions{
             Console.WriteLine("There are no stored substitutions.");
         }
     }
-
-    //Needs test
+    //Prints a single reference ingredient (refI) and its corresponding substitution ingredients list to the console
     public void ConsolePrintSubstititions(string refI){
         if(substitutionsDict.ContainsKey(refI)){
             Console.WriteLine("Substitutions for "+refI+":");
@@ -200,15 +191,12 @@ public class Substitutions{
             Console.WriteLine(refI+" does not have any stored substitutes.");
         }
     }
-
-
-    //Needs test
+    //Writes substitutionsDict to substitutions.json after serialization
     public void WriteToJSON(){
         string jsonString = JsonSerializer.Serialize(substitutionsDict);
         File.WriteAllText("substitutions.json", jsonString);
     }
-
-    //Needs test
+    //Rebuilds substitutionsDict from the deserialized contents of substitutions.json
     public void ReadFromJSON(){
         if(File.Exists("substitutions.json")){
             string jsonString = File.ReadAllText("substitutions.json");
@@ -227,12 +215,10 @@ public class Groceries{
     public Groceries(){
         groceriesDict = new Dictionary<string, string>();
     }
-    //Needs test
     public void AddGrocery(string gItem, string gQuantity){
         groceriesDict[gItem] = gQuantity;
         WriteToJSON();
     }
-    //Needs test
     public void RemoveGrocery(string gItem){
         if(groceriesDict.ContainsKey(gItem)){
             groceriesDict.Remove(gItem);
@@ -244,7 +230,6 @@ public class Groceries{
         WriteToJSON();
     }
 
-    //Needs test
     public void ConsolePrintGrocery(string gItem){
         if(groceriesDict.ContainsKey(gItem)){
             string gQuantity = groceriesDict[gItem];
@@ -252,7 +237,6 @@ public class Groceries{
         }
     }
     
-    //Needs test
     public void ConsolePrintAllGroceries(){
         if(groceriesDict.Count > 0){
             Console.WriteLine("Grocery List (Item [quantity])");
@@ -264,13 +248,11 @@ public class Groceries{
         }
     }
 
-    //Needs test
     public void WriteToJSON(){
         string jsonString = JsonSerializer.Serialize(groceriesDict);
         File.WriteAllText("groceries.json", jsonString);
     }
 
-    //Needs test
     public void ReadFromJSON(){
         if(File.Exists("groceries.json")){
             string jsonString = File.ReadAllText("groceries.json");
