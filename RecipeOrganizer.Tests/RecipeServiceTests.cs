@@ -9,6 +9,7 @@ public class RecipeServiceTests
     Recipe.Service.Groceries groceries = new Groceries();
     Recipe.Service.Recipes recipes = new Recipes();
 
+    //Test covering all methods in the Substitutions class
     [Fact]
     public void SubstitutionsTests(){
         substitutions.AddSubstitution("testRefIngredient", "testSubstituteIngredient");
@@ -20,9 +21,10 @@ public class RecipeServiceTests
         substitutions.ConsolePrintAllSubstititions();
         //If this point is reached without an exception, the test is considered passed.
         //For additional details, see: https://xunit.net/docs/comparisons#note5
-        //These methods are all voids, so the assertion being tested is the absence of an exception    
+        //These methods are all voids, so the assertion being tested is the absence of an exception.
+        //These tests cover all methods in the class except the initial instantiation.
     }
-
+    //Test covering all methods in the Groceries class
     [Fact]
     public void GroceriesTests(){
         groceries.AddGrocery("testRefIngredient", "testRefQuantity");
@@ -34,9 +36,10 @@ public class RecipeServiceTests
         groceries.ConsolePrintAllGroceries();
         //If this point is reached without an exception, the test is considered passed.
         //For additional details, see: https://xunit.net/docs/comparisons#note5  
-        //These methods are all voids, so the assertion being tested is the absence of an exception            
+        //These methods are all voids, so the assertion being tested is the absence of an exception.
+        //These tests cover all methods in the class except the initial instantiation.          
     }
-
+    //Test covering all methods in the Recipes class
     [Fact]
     public void RecipesTests(){
         recipes.CreateEmptyRecipe("testRefRecipeName");
@@ -67,6 +70,7 @@ public class RecipeServiceTests
         recipes.ReadFromJSON();
         //If this point is reached without an exception, the test is considered passed.
         //For additional details, see: https://xunit.net/docs/comparisons#note5  
-        //These methods are all voids, so the assertion being tested is the absence of an exception    
+        //These methods are all voids, so the assertion being tested is the absence of an exception.
+        //These tests cover all methods in the class except the initial instantiation.   
     }
 }

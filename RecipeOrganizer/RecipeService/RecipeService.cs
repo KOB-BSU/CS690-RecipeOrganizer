@@ -215,10 +215,12 @@ public class Groceries{
     public Groceries(){
         groceriesDict = new Dictionary<string, string>();
     }
+    //Adds a grocery item and quantity to groceriesDict or overwrites existing values before updating groceries.json
     public void AddGrocery(string gItem, string gQuantity){
         groceriesDict[gItem] = gQuantity;
         WriteToJSON();
     }
+    //Removes a grocery item if it exists and notifies the user if the groceriesDict is empty before updating groceries.json
     public void RemoveGrocery(string gItem){
         if(groceriesDict.ContainsKey(gItem)){
             groceriesDict.Remove(gItem);
@@ -229,14 +231,14 @@ public class Groceries{
         }
         WriteToJSON();
     }
-
+    //Prints a single grocery item and its corresponding quantity to the console with formatting
     public void ConsolePrintGrocery(string gItem){
         if(groceriesDict.ContainsKey(gItem)){
             string gQuantity = groceriesDict[gItem];
             Console.WriteLine(gItem+" ["+gQuantity+"]");
         }
     }
-    
+    //Prints the entire grocery list to the console or informs the user that the grocery list is empty
     public void ConsolePrintAllGroceries(){
         if(groceriesDict.Count > 0){
             Console.WriteLine("Grocery List (Item [quantity])");
@@ -247,12 +249,12 @@ public class Groceries{
             Console.WriteLine("There are no groceries on your list.");
         }
     }
-
+    //Serializes groceriesDict and writes it to groceries.json
     public void WriteToJSON(){
         string jsonString = JsonSerializer.Serialize(groceriesDict);
         File.WriteAllText("groceries.json", jsonString);
     }
-
+    //Reads groceries.json, deseralizes it, and replaces groceriesDict as long as the deserialized dictionary isn't empty
     public void ReadFromJSON(){
         if(File.Exists("groceries.json")){
             string jsonString = File.ReadAllText("groceries.json");

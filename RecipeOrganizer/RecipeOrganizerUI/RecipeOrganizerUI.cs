@@ -20,22 +20,21 @@ public class Program
         
         while (!exitApp){
             Console.Clear();
-            Console.WriteLine("[key] - Mode");            
-            Console.WriteLine("Ingredient Substitutions");
+            Console.WriteLine(" [key] - Mode");            
+            Console.WriteLine("-Ingredient Substitutions");
             Console.WriteLine(" [1] - View Substitutions");
             Console.WriteLine(" [2] - Add Substitutions");
             Console.WriteLine(" [3] - Remove Substitutions");            
-            Console.WriteLine("Grocery List");
+            Console.WriteLine("-Grocery List");
             Console.WriteLine(" [4] - View Grocery List");
             Console.WriteLine(" [5] - Add Grocery List Item");
             Console.WriteLine(" [6] - Remove Grocery List Item");
-            Console.WriteLine("RECIPE DEV");
+            Console.WriteLine("-Recipes");
             Console.WriteLine(" [7] - Find Recipes");
             Console.WriteLine(" [8] - View Recipe");
             Console.WriteLine(" [9] - Add/Edit Recipe");
             Console.WriteLine(" [0] - Remove Recipe");
-            Console.WriteLine(" [D] - RECIPE DEV");
-            Console.WriteLine("Exit Program");            
+            Console.WriteLine("-Exit Program");            
             Console.WriteLine(" [X] - Exit");
             Console.WriteLine();
             Console.WriteLine("(Type the key for your selected mode, then the enter key.)");
@@ -239,44 +238,6 @@ public class Program
                     Console.WriteLine("Press enter to continue.");
                     garbageVar = Console.ReadLine();
                     break;
-
-                
-
-                // case "D":
-                //     Console.Clear();
-                //     Console.WriteLine("RECIPE DEV");
-
-                //     recipes.CreateEmptyRecipe("scrambled eggs");
-                //     recipes.AddIngredientToRecipe("scrambled eggs", "eggs");
-                //     recipes.AddInstructionToRecipe("scrambled eggs", "scramble the eggs");
-                //     recipes.AddInstructionToRecipe("scrambled eggs", "cook in pan to desired doneness");
-                //     recipes.AddTagToRecipe("scrambled eggs", "eggs");
-                //     recipes.AddTagToRecipe("scrambled eggs", "breakfast");
-
-                //     recipes.CreateEmptyRecipe("oatmeal");
-                //     recipes.AddIngredientToRecipe("oatmeal", "1/2 c oats");
-                //     recipes.AddIngredientToRecipe("oatmeal", "1/2 c water");                    
-                //     recipes.AddInstructionToRecipe("oatmeal", "combine in saucepan");
-                //     recipes.AddInstructionToRecipe("oatmeal", "boil for three minutes");
-                //     recipes.AddTagToRecipe("oatmeal", "oats");
-                //     recipes.AddTagToRecipe("oatmeal", "breakfast");
-
-
-                //     // recipes.CreateEmptyRecipe("scrambled eggs");
-                //     // recipes.AddIngredientToRecipe("scrambled eggs", "two eggs");
-                //     // recipes.AddInstructionToRecipe("scrambled eggs", "scramble those eggs");
-                //     // recipes.AddInstructionToRecipe("scrambled eggs", "cook them however you like them");
-                //     // recipes.AddTagToRecipe("scrambled eggs", "egg");
-                //     // recipes.AddTagToRecipe("scrambled eggs", "eggs");
-                //     // recipes.AddTagToRecipe("scrambled eggs", "scrambled");
-                //     // recipes.AddTagToRecipe("scrambled eggs", "breakfast");
-                //     // recipes.WriteToJSON();
-                //     recipes.ConsolePrintRecipeNames();
-
-                //     recipes.ConsolePrintRecipe("scrambled eggs");
-                //     Console.WriteLine("Press enter to continue.");
-                //     garbageVar = Console.ReadLine();
-                //     break;
 
                 case "X":
                     Console.Clear();
