@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RecipeOrganizer.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d69f242982f6a98e7ac5e789f733640bcb3cdbe")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8755daa5d9df184e075831b2462cc8733975b8fc")]
 [assembly: System.Reflection.AssemblyProductAttribute("RecipeOrganizer.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RecipeOrganizer.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
