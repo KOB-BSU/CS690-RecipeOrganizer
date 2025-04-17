@@ -1,7 +1,0 @@
-/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeOrganizerUI/bin/Release/net8.0/publish/RecipeOrganizerUI
-/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeOrganizerUI/bin/Release/net8.0/publish/RecipeOrganizerUI.dll
-/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeOrganizerUI/bin/Release/net8.0/publish/RecipeOrganizerUI.deps.json
-/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeOrganizerUI/bin/Release/net8.0/publish/RecipeOrganizerUI.runtimeconfig.json
-/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeOrganizerUI/bin/Release/net8.0/publish/RecipeOrganizerUI.pdb
-/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeOrganizerUI/bin/Release/net8.0/publish/RecipeService.dll
-/workspaces/CS690-RecipeOrganizer/RecipeOrganizer/RecipeOrganizerUI/bin/Release/net8.0/publish/RecipeService.pdb
